@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PocketSmart AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow">SMART PLANNING • AI ASSISTED</p>
+    <h1>PocketSmart AI</h1>
+    <p>Plan your home, party and jewelry budget with practical AI-assisted recommendations.</p>
+  </div>
+</header>
+
+<main class="container">
+  <div class="tabs">
+    <button class="tab active" data-tab="home">Home Interior</button>
+    <button class="tab" data-tab="party">Party Planner</button>
+    <button class="tab" data-tab="jewelry">Jewelry Planner</button>
+  </div>
+
+  <section id="home" class="panel active">
+    <h2>Home Interior Planner</h2>
+    <form id="homeForm">
+      <label>Budget (₹)<input id="homeBudget" type="number" min="1" required placeholder="100000"></label>
+      <div id="rooms"></div>
+      <button type="button" class="secondary" id="addRoom">+ Add Room</button>
+      <button class="primary" type="submit">Generate Home Plan</button>
+    </form>
+  </section>
+
+  <section id="party" class="panel">
+    <h2>Party Planner</h2>
+    <form id="partyForm">
+      <label>Budget (₹)<input id="partyBudget" type="number" min="1" required placeholder="75000"></label>
+      <label>Guest Count<input id="guests" type="number" min="1" required placeholder="50"></label>
+      <label>Event Type<input id="eventType" required placeholder="Birthday"></label>
+      <label>Venue Information<input id="venue" required placeholder="Chennai banquet hall"></label>
+      <button class="primary" type="submit">Generate Party Plan</button>
+    </form>
+  </section>
+
+  <section id="jewelry" class="panel">
+    <h2>Jewelry Planner</h2>
+    <form id="jewelryForm">
+      <label>Budget (₹)<input id="jewelryBudget" type="number" min="1" required placeholder="50000"></label>
+      <label>Occasion<input id="occasion" required placeholder="Wedding"></label>
+      <label>Style<input id="style" required placeholder="Traditional / Minimal / Modern"></label>
+      <label>Outfit Image (optional)<input id="outfitImage" type="file" accept="image/*"></label>
+      <button class="primary" type="submit">Generate Jewelry Plan</button>
+    </form>
+  </section>
+
+  <div id="status"></div>
+  <section id="results" class="results hidden">
+    <div class="result-head">
+      <div><p class="eyebrow">PLAN RESULT</p><h2 id="resultTitle"></h2></div>
+      <span id="aiBadge" class="badge"></span>
+    </div>
+    <div id="allocation" class="allocation"></div>
+    <h3>Recommendations</h3>
+    <div id="recommendations" class="recommendations"></div>
+    <h3>Notes</h3>
+    <ul id="notes"></ul>
+  </section>
+</main>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
